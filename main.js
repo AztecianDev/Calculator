@@ -1,46 +1,53 @@
-const result = document.getElementById("result");
-const choices = document.querySelectorAll(".choice");
+const display = document.getElementById("display");
+const btnNumbers = document.querySelectorAll(".btnNum");
+const btnOperators = document.querySelectorAll(".btnOp");
 
-
-// add function
+// add operator function
 function add(a, b) {
-    return a + b;
+  return a + b;
 }
 
-//minus function
+//minus operator function
 function minus(a, b) {
-    return a - b;
+  return a - b;
 }
 
-
-//divide function
+//divide operator function
 function divide(a, b) {
-    return a / b;
+  return a / b;
 }
 
-// times function
+// times operator function
 function multiply(a, b) {
-    return a * b;
+  return a * b;
 }
-
 
 // operate function
+// takes in operator numbers and operator name (function name).
 function operate(num1, num2, operators) {
-
-    return operators(num1, num2);
-
+  return operators(num1, num2);
 }
 // console.log(operate(6, 6, add));
 
-// display user input as output in display.
-let myArr = []; // create array for user input.
-function display(e) {
-    const input = e.target.id; // id of button clicked stored in variable input.
-    result.textContent = myArr; // display text from array on calc display.
-    myArr.push(input); // push the input from click to array.
-    console.table(myArr);
-    
+// display numbers clicked to display.
+function numbersHandler(e) {
+  const number = e.target.id; // id of button clicked stored in variable number.
+  display.textContent = number;
+
+  console.log(number);
 }
 
-//  eventlistner.
-choices.forEach(choice => choice.addEventListener('click', display));
+// display operators clicked to display.
+function operatorsHandler(e) {
+  const output = e.target.id;
+  display.textContent = output;
+
+  console.log(output);
+}
+
+//  eventlistner for numbers clicked.
+btnNumbers.forEach(btnNum => btnNum.addEventListener("click", numbersHandler));
+// eventlistner for operators.
+btnOperators.forEach(btnOp =>
+  btnOp.addEventListener("click", operatorsHandler)
+);
